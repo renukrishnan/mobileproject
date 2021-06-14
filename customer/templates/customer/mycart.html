@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{%extends 'customer/index.html'%}
+
+
+{%block body_block%}
+
+
+<h1> WELCOME USER {{request.user}}</h1>
+<div class="container">
+    <div class="row">
+        {%for cart_item in cart_items%}
+        <div class="col-4">
+            <div class="card" style="width: 18rem;">
+                <img src="{{cart_item.product.Image.url}}" class="card-img-top" style="height:300px" alt="..." >
+                <div class="card-body">
+                    <h5 class="card-title">{{cart_item.product.mobile_name}}</h5>
+                    <p class="card-text"> {{cart_item.product.price}}</p>
+                    <p class="card-text"> {{cart_item.status}}</p>
+                    <a href="" class="btn btn-primary">Place order</a>
+                    <a href="{%url 'removecart' cart_item.id%}" class="btn btn-danger">Remove</a>
+                </div>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
